@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꼬라다이스 관리표 (가로형)</title>
+    <title>꼬라다이스 관리표 (A4 최적화)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
@@ -11,28 +11,29 @@
         /* A4 가로 출력을 위한 설정 */
         @page {
             size: A4 landscape;
-            margin: 10mm;
+            margin: 5mm; /* 여백을 조금 더 줄여서 내용 확보 */
         }
 
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background-color: #fdfbf7;
-            padding: 20px;
+            padding: 10px;
             margin: 0;
+            display: flex;
+            justify-content: center;
         }
 
         .container-landscape {
             width: 100%;
-            max-width: 1100px; /* A4 가로 비율에 맞춘 최대 너비 */
-            margin: 0 auto;
+            max-width: 1050px;
+            background-color: transparent;
         }
 
         .table-container {
             background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             overflow: hidden;
-            margin-top: 20px;
+            margin-top: 15px;
             border: 1px solid #e5e7eb;
         }
 
@@ -45,19 +46,19 @@
         th {
             background-color: #fbbf24;
             color: #451a03;
-            padding: 15px 10px;
+            padding: 12px 5px;
             text-align: center;
             border: 1px solid #f59e0b;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
         }
 
         td {
-            padding: 12px 15px;
+            padding: 8px 10px;
             border: 1px solid #e5e7eb;
             text-align: center;
-            height: 75px; /* 가로형일 때 더 시원하게 높이 조정 */
-            font-size: 1.1rem;
+            height: 55px; /* 한 장에 들어가도록 높이 살짝 축소 */
+            font-size: 1rem;
         }
 
         tr:nth-child(even) {
@@ -68,7 +69,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             padding: 0 10px;
         }
 
@@ -80,86 +81,88 @@
         .main-title-wrapper {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         h1 {
             color: #92400e;
-            font-size: 3.5rem; 
+            font-size: 3rem; 
             font-weight: 900;
             margin: 0;
-            line-height: 1.1;
+            line-height: 1;
         }
 
         .month-display {
             display: flex;
             align-items: center;
             background-color: #fef3c7;
-            padding: 10px 20px;
-            border-radius: 12px;
+            padding: 6px 15px;
+            border-radius: 8px;
             border: 2px solid #fbbf24;
         }
 
         .month-input-box {
-            width: 70px;
-            height: 40px;
+            width: 50px;
+            height: 30px;
             background-color: white;
-            border-radius: 6px;
-            margin-right: 8px;
+            border-radius: 4px;
+            margin-right: 6px;
         }
 
         .month-label {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #92400e;
         }
 
         .sub-text {
             color: #b45309;
-            font-size: 1.2rem;
-            margin-top: 10px;
+            font-size: 1rem;
+            margin-top: 5px;
             font-weight: 500;
         }
 
         .print-btn {
             background-color: #d97706;
             color: white;
-            padding: 12px 24px;
-            border-radius: 10px;
+            padding: 8px 16px;
+            border-radius: 8px;
             font-weight: bold;
-            font-size: 1.1rem;
             cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .print-btn:hover {
-            background-color: #b45309;
         }
 
         .guide-text {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: normal;
             display: block;
-            margin-top: 4px;
+            margin-top: 2px;
             color: #78350f;
+        }
+
+        .footer-box {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            text-align: center;
         }
 
         @media print {
             .print-btn { display: none; }
             body { background-color: white; padding: 0; }
             .container-landscape { max-width: 100%; }
-            .table-container { box-shadow: none; border: 1.5px solid black; }
-            th { background-color: #f3f4f6 !important; color: black !important; border: 1.5px solid black !important; }
-            td { border: 1.5px solid black !important; }
-            h1 { color: black; font-size: 3.2rem; }
+            .table-container { box-shadow: none; border: 1px solid black; }
+            th { background-color: #eee !important; color: black !important; border: 1px solid black !important; }
+            td { border: 1px solid black !important; height: 50px !important; }
+            h1 { color: black; font-size: 2.5rem; }
             .month-display { border-color: black; background-color: white; }
-            .sub-text, .guide-text, .month-label { color: #333; }
-            .footer-box { border: 1.5px solid black !important; background-color: white !important; }
+            .footer-box { border: 1px solid black !important; background-color: white !important; margin-top: 10px; }
         }
 
         .chicken-icon {
-            font-size: 3rem;
-            margin-right: 8px;
+            font-size: 2.5rem;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -177,7 +180,7 @@
                 </div>
                 <p class="sub-text">건강한 꼬꼬들을 위한 기록</p>
             </div>
-            <button class="print-btn" onclick="window.print()">🖨️ 가로 방향 인쇄</button>
+            <button class="print-btn" onclick="window.print()">관리표 인쇄</button>
         </div>
 
         <div class="table-container">
@@ -199,8 +202,8 @@
             </table>
         </div>
         
-        <div class="mt-8 p-5 bg-orange-50 border border-orange-200 rounded-lg text-center footer-box">
-            <p class="text-orange-900 font-bold text-xl">
+        <div class="footer-box">
+            <p class="text-orange-900 font-bold text-lg">
                 📢 수요일/일요일마다 <span class="text-red-600 font-black">천관</span>과 <span class="text-blue-600 font-black">해관</span>이 번갈아가며 관리합니다.
             </p>
         </div>
@@ -208,14 +211,10 @@
 
     <script>
         const tableBody = document.getElementById('table-body');
+        // A4 한 장에 안전하게 들어가도록 줄 간격과 개수 유지
         for (let i = 0; i < 12; i++) {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            `;
+            row.innerHTML = `<td></td><td></td><td></td><td></td>`;
             tableBody.appendChild(row);
         }
     </script>
